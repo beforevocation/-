@@ -1,7 +1,7 @@
 # coding: utf-8
 from bs4 import BeautifulSoup
 
-def bs(html):
+def bs(html, file, tag):
     #用html.parser或者lxml解析html文档，lxml更好一点
     #soup = BeautifulSoup(html, 'html.parser')
     soup = BeautifulSoup(html, 'lxml')
@@ -14,7 +14,8 @@ def bs(html):
     #tObj的类型是：<class 'bs4.element.ResultSet'>，是不是封装的什么我也不知道
     tObj = soup.find_all('h1')
     # print(type(tObj))
-    print(tObj.pop(0).contents[1].get_text())
+    # if tObj.__len__() > 0:
+    print("ID:%d" % tag, tObj.pop(0).contents[1].get_text(), file=file)
     # for tag in tObj:
     #     div_tag = tag.contents[1].get_text()
     #     print(div_tag)

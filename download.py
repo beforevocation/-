@@ -1,16 +1,18 @@
 import urllib.request
-
-def download(url, num_retries=5, user_agent = 'ljw'):
+num_retries = 5
+user_agent = 'll'
+a = 'abc'
+def download(url, tag, file):
     print('Downloading:', url)
     try:
         #设置代理，注意是花括号
-        headers = {'User-agent':user_agent}
+        headers = {'User-agent':user_agent + 'a'}
         request = urllib.request.Request(url, headers=headers)
         #打开链接，并读取网页
         html = urllib.request.urlopen(request).read()
         #捕获可能抛出的URLError异常
     except urllib.error.HTTPError:
-        print('该ID页面不存在')
+        print('ID:%d页面不存在' % tag, file=file)
         return False
     except urllib.URLError as e:
         print('Download error:', e.reason)

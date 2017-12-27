@@ -7,15 +7,17 @@ import test
 import urllib
 import itertools
 
-page = 5350026
+page = 1000
 time_start = time.time()
-for tag in range(5350024, page):
+f = open("movie.txt", "w")
+for tag in range(0, 1000):
     print(tag)
-    html = download.download('https://movie.douban.com/subject/%d/' % tag)
+    html = download.download('https://movie.douban.com/subject/%d/' % tag, tag, f)
     if not html == False:
-        bf.bs(html)
+        bf.bs(html, f, tag)
 time = time.time() - time_start
 print('程序耗时：%f' % time)
+f.close()
 
 
 
