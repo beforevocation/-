@@ -6,17 +6,26 @@ def bs(html):
     #soup = BeautifulSoup(html, 'html.parser')
     soup = BeautifulSoup(html, 'lxml')
     #根据标签获取属性
-    print(soup.p.attrs)
-    print(soup.a.attrs)
-    print(soup.p.string)
-    print(soup.a.string)
-    #爬电影名字
-    bsObj = soup.find_all('div', {'class': 'pl2'})
-    for tag in bsObj:
-        div_tag = tag.contents[1].get_text()
-        name = div_tag.strip('\n').replace(' ', '') + '\n'
-        print(name)
-    #格式化解析之后的html
-    soupprettify = soup.prettify()
-    return soupprettify
+    # print(soup.h1.attrs)
+    # print(soup.a.attrs)
+    # print(soup.p.string)
+    # print(soup.a.string)
+    # print(soup.find_all('h1'))
+    #tObj的类型是：<class 'bs4.element.ResultSet'>，是不是封装的什么我也不知道
+    tObj = soup.find_all('h1')
+    # print(type(tObj))
+    print(tObj.pop(0).contents[1].get_text())
+    # for tag in tObj:
+    #     div_tag = tag.contents[1].get_text()
+    #     print(div_tag)
+
+    # #爬电影名字
+    # bsObj = soup.find_all('div', {'class': 'pl2'})
+    # for tag in bsObj:
+    #     div_tag = tag.contents[1].get_text()
+    #     name = div_tag.strip('\n').replace(' ', '') + '\n'
+    #     print(name)
+    # #格式化解析之后的html
+    # soupprettify = soup.prettify()
+    #  return soupprettify
 

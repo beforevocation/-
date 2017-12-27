@@ -9,6 +9,9 @@ def download(url, num_retries=5, user_agent = 'ljw'):
         #打开链接，并读取网页
         html = urllib.request.urlopen(request).read()
         #捕获可能抛出的URLError异常
+    except urllib.error.HTTPError:
+        print('该ID页面不存在')
+        return False
     except urllib.URLError as e:
         print('Download error:', e.reason)
         html = None
